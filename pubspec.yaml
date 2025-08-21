@@ -44,7 +44,7 @@ dependencies:
   flutter_svg: ^2.0.17
   shared_preferences: ^2.5.2
   intl: ^0.20.2
-  flutter_dotenv: ^5.2.1
+  flutter_dotenv: ^6.0.0
   loading_more_list: ^7.1.0
   auto_size_text: ^3.0.0
   webview_flutter: ^4.12.0
