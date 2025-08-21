@@ -29,11 +29,11 @@ class CustomButton extends StatelessWidget {
     Key? key,
     this.text,
     required this.onPressed, // Nullable onPressed
-    this.backgroundColor = CustomColors.white,
+    this.backgroundColor = CustomColors.PrimaryColor,
     this.borderRadius = 6.0,
     this.padding = const EdgeInsets.symmetric(horizontal: 0.0),
     required this.textStyle,
-    this.height = 52.0,
+    this.height = 44.0,
   }) : super(key: key);
 
   @override

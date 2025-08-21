@@ -42,7 +42,7 @@ class DatePickerButton extends StatelessWidget {
         height: 20,
         width: 20,
         child: CircularProgressIndicator(
-          color: CustomColors.mainColor,
+          color: CustomColors.PrimaryColor,
           strokeCap: StrokeCap.round,
         ),
       ),

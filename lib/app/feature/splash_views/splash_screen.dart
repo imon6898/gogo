@@ -27,12 +27,13 @@ class SplashScreen extends StatelessWidget {
               child: ScaleTransition(
                 scale: controller.scaleAnimation,
                 child: Container(
-                  width: 400.w, // Adjust size to fit the image with padding
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  width: 300.w, // Adjust size to fit the image with padding
                   height: 400.h,
                   alignment: Alignment.center,
                   child: Image.asset(
-                    ImageUtils.mdfVerticalWhiteLogo,
-                    width: 400.w,
+                    ImageUtils.AppVerticalWhiteLogo,
+                    width: 300.w,
                     height: 400.h,
                   ),
                 ),

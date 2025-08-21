@@ -91,19 +91,19 @@ class CustomSearchField extends StatelessWidget {
                 height: 48.h,
                 width: 60.w,
                 decoration: BoxDecoration(
-                  color: CustomColors.mainColor,
+                  color: CustomColors.PrimaryColor,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(borderRadius.r),
                     bottomRight: Radius.circular(borderRadius.r),
                   ),
                 ),
                 child: Center(
-                  child: SvgPicture.asset(
-                    ImageUtils.mdflogosearch,
-                    color: Colors.white,
-                    height: 50.h,
-                    width: 50.w,
-                  ),
+                  // child: SvgPicture.asset(
+                  //   ImageUtils.mdflogosearch,
+                  //   color: Colors.white,
+                  //   height: 50.h,
+                  //   width: 50.w,
+                  // ),
                 ),
               ),
             ),

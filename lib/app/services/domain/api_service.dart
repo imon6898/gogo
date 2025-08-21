@@ -270,7 +270,7 @@ SnackbarController showErrorSnackbar({required String message}) {
       message: message,
       icon: const Icon(Icons.error, color: Colors.white),
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: CustomColors.mainColor,
+      backgroundColor: CustomColors.PrimaryColor,
       borderRadius: 20,
       margin: const EdgeInsets.all(10),
       duration: const Duration(seconds: 3),

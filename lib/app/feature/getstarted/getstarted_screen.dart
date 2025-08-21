@@ -15,175 +15,156 @@ class GetstartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<GetstartedController>(builder: (controller) {
       return Scaffold(
-        body: Stack(
-          children: [
-            // Background color
-            Positioned.fill(
-              child: Container(color: CustomColors.mainColor),
-            ),
+        backgroundColor: CustomColors.BGColor,
+        body: SafeArea(
 
-            // Top Logo with position animation
-            Positioned(
-              top: 80.h,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                ImageUtils.mdffullLogo,
-                width: 120.w,
-                height: 120.h,
-              ),
-
-              // SlideTransition(
-              //   position: controller.mdfLogoPositionAnimation,
-              //   child: FadeTransition(
-              //     opacity: controller.fadeAnimation,
-              //     child: Image.asset(
-              //       ImageUtils.mdffullLogo,
-              //       width: 120.w,
-              //       height: 120.h,
-              //     ),
-              //   ),
-              // ),
-            ),
-
-            // White curved container
-            Positioned(
-              bottom: 0,
-              child: CustomPaint(
-                painter: MyCustomPainter(),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView(
+                  controller: controller.pageController,
+                  onPageChanged: controller.onPageChanged,
+                  children: [
+                    _onboardingPage(
+                      image: ImageUtils.Onboarding1,
+                      title: "Welcome to\nAdventcircle 💖",
+                      subtitle:
+                      "Building stronger communities through faith and compassion together.",
+                    ),
+                    _onboardingPage(
+                      HoriLogo: ImageUtils.AppHorizontalWhiteLogo,
+                      image: ImageUtils.Onboarding2,
+                      title: "Connecting faith",
+                      subtitle:
+                      "Stay connected with your faith community wherever you are, anytime, and keep growing together in unity",
+                    ),
+                    _onboardingPage(
+                      HoriLogo: ImageUtils.AppHorizontalWhiteLogo,
+                      image: ImageUtils.Onboarding3,
+                      title: "Business & Community",
+                      subtitle:
+                      "Join a community of believers making a positive difference locally and globally through faith driven actions",
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            // Center Bottle Logo with position animation
-            Positioned(
-              top: 250.h,
-              left: 0,
-              right: 0,
-              child: SlideTransition(
-                position: controller.mdfBottleLogoPositionAnimation,
-                child: ScaleTransition(
-                  scale: controller.scaleAnimation,
-                  child: Image.asset(
-                    ImageUtils.mdfbottoleLogo,
-                    width: 100.w,
-                    height: 100.h,
-                  ),
-                ),
-              ),
-            ),
-
-            // Button with fade animation
-            Positioned(
-              bottom: 40.h,
-              left: 20.w,
-              right: 20.w,
-              child: Column(
-                spacing: 10,
-                children: [
-                  FadeTransition(
-                    opacity: controller.fadeAnimation,
-                    child: Text(
-                      'Welcome',
-                      style: TextStyle(
-                          fontSize: 28.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  FadeTransition(
-                    opacity: controller.fadeAnimation,
-                    child: Text(
-                      'to MealDealFinder where you find great food at great prices',
-                      style: TextStyle(
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 60.h,
-                  ),
-                  FadeTransition(
-                    opacity: controller.fadeAnimation,
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'By continuing, you agree to our ',
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              color: Colors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'terms and conditions. ',
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Find out how we use your data in our ',
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              color: Colors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'privacy statement.',
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  FadeTransition(
-                    opacity: controller.fadeAnimation,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: CustomButton(
-                        text: "Let's get started",
-                        onPressed: () async {
-                          controller.getStarted();
-
-                        },
-                        backgroundColor: CustomColors.mainColor,
-                        borderRadius: 30.0,
-                        textStyle: TextStyle(
-                          color: CustomColors.white,
-                          fontSize: 22.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+              // Hide bottom section only on first page
+              if (controller.currentPage != 0)
+                _bottomSection(controller),
+            ],
+          ),
         ),
       );
     });
   }
+
+  Widget _onboardingPage({
+    String? HoriLogo,
+    required String image,
+    required String title,
+    required String subtitle,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (HoriLogo != null)
+            Image.asset(
+              HoriLogo,
+              width: 200.w,
+              height: 50.h,
+            ),
+          const SizedBox(height: 40),
+          Expanded(child: Image.asset(image, fit: BoxFit.contain)),
+          const SizedBox(height: 20),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            subtitle,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Colors.black54,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
+
+  Widget _bottomSection(GetstartedController controller) {
+    // Hide on first page (intro splash)
+    if (controller.currentPage == 0) {
+      return const SizedBox.shrink();
+    }
+
+    // Show only for page 1 and 2
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          // Indicator (for only 2 real onboarding pages: index 1 & 2)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              2,
+                  (index) {
+                // Map indicator index 0 → page 1, index 1 → page 2
+                final actualIndex = index + 1;
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.symmetric(horizontal: 2),
+                  width: controller.currentPage == actualIndex ? 12 : 8,
+                  height: 3,
+                  decoration: BoxDecoration(
+                    color: controller.currentPage == actualIndex
+                        ? Colors.teal
+                        : Colors.grey,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Button
+          SizedBox(
+            width: double.infinity,
+            child: CustomButton(
+              text: controller.currentPage == 2 ? "Get Started" : "Next",
+              onPressed: () {
+                if (controller.currentPage == 2) {
+                  controller.getStarted();
+                } else {
+                  controller.nextPage();
+                }
+              },
+              textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }
+
+
 
 // Custom painter for curved top
 class MyCustomPainter extends CustomPainter {

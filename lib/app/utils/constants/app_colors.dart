@@ -20,11 +20,14 @@ import 'package:flutter/material.dart';
 
 class CustomColors {
   // Main Color
-  static const Color mainColor = Color(0xFFFF000D);
+  static const Color PrimaryColor = Color(0xFF006466);
 
 
   // Background Colors
-  static const Color BGColor = Color(0xFFECEDE8);
+  static const Color BGColor = Color(0xFFF8F8F8);
+
+  // Text Colors
+  static const Color ParagraphTextColor = Color(0xFF44444F);
 
   // Button Color & Cards Colour
   static const Color CardsColour = Color(0xFFF9F8F6);

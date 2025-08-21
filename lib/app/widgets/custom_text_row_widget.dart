@@ -31,7 +31,7 @@ class CustomTextRow extends StatelessWidget {
             TextSpan(
               text: isEmptyValue ? "No value provided" : value,
               style: CustomTextStyles.regular16.copyWith(
-                color: isEmptyValue ? CustomColors.mainColor : AppTheme.isDarkMode(context) ? Colors.white : Colors.black,
+                color: isEmptyValue ? CustomColors.PrimaryColor : AppTheme.isDarkMode(context) ? Colors.white : Colors.black,
                 fontWeight: isEmptyValue ? FontWeight.normal : FontWeight.w400,
               ),
             ),

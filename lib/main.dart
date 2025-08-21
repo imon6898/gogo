@@ -45,7 +45,7 @@ Future<void> main() async {
 
   // bool granted = await LocationPermissionService.requestLocationPermission();
   // if (granted) {
-  //   final position = await LocationPermissionService.getCurrentLocation(); // ✅ No error
+  //   final position = await LocationPermissionService.getCurrentLocation();
   //   if (position != null) {
   //     debugPrint("Latitude: ${position.latitude}, Longitude: ${position.longitude}");
   //   }
